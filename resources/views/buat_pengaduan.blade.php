@@ -59,16 +59,6 @@
 								</div>
 							</div>
 
-							<!--<div class="form-group">
-								<label class="col-md-3">Kordinat</label>
-								<div class="col-md-3">
-									<input class="form-control" placeholder="Latitude " id="lat" name="lat" type="text" readonly="">
-								</div>
-								<div class="col-md-3">
-									<input class="form-control" placeholder="Longitude " id="lng" name="lng" type="text" readonly="">
-								</div>
-							</div>-->
-
 							<div class="form-group">
 								<label class="col-md-3">Kategori Rusak</label>
 								<div class="col-md-3">
@@ -80,6 +70,9 @@
 								</div>
 								<a href="#" data-toggle="modal" data-target="#ket"><span class="glyphicon glyphicon-question-sign" style="margin-top:5px;font-size:18px;"></span></a>
 							</div>
+
+							<input type="text" id="lat" name="lat">
+							<input type="text" id="lng" name="lng">
 
 							<div class="form-group">
 								<label class="col-md-3">Foto Jalan</label>
@@ -103,6 +96,7 @@
 							<div class="panel-body">
 							<div style="width: auto;height: 300px;" id="Mymap"></div>
 							<p style="margin-top: 5px;text-align: center;color: red"><b>* Tarik Titik Marker Jika Kordinat Tidak Sesuai *</b></p>
+							<div id="output"></div>
 							</div>
 						</div>
 					</div>
@@ -139,6 +133,9 @@
 
 @push('scripts')    
 <script type='text/javascript'>
+
+	document.getElementById("lat").style.display = "none";
+	document.getElementById("lng").style.display = "none";
 	//BING MAPS
 	var map, searchManager;
 
@@ -170,7 +167,7 @@
             where: query,
             callback: function (r) {
                 if (r && r.results && r.results.length > 0) {
-                    var pin, pins = [], locs = [], output = 'Results:<br/>';
+                    var lat, lng, pin, pins = [], locs = [], output = 'Saran:<br/>';
 
                     for (var i = 0; i < r.results.length; i++) {
                         //Create a pushpin for each result. 
@@ -181,13 +178,18 @@
                         locs.push(r.results[i].location);
 
                         output += i + ') ' + r.results[i].name + '<br/>';
+
+						lat = r.results[i].location.latitude;
+						lng = r.results[i].location.longitude;
                     }
 
                     //Add the pins to the map
                     map.entities.push(pins);
 
                     //Display list of results
-                    //document.getElementById('output').innerHTML = output;
+					document.getElementById('lat').value = lat;
+					document.getElementById('lng').value = lng;
+                    document.getElementById('output').innerHTML = output;
 
                     //Determine a bounding box to best view the results.
                     var bounds;

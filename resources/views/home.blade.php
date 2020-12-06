@@ -15,7 +15,7 @@
 	<!-- PAGE CONTENT WRAPPER -->
 	<div class="page-content-wrap">
 		<div class="row">
-			<div style="max-width: auto;height: 550px;margin-bottom: 10px;" id="map"></div>
+			<div style="max-width: auto;height: 530px;margin-bottom: 10px;" id="Mymap"></div>
 		</div>
 		<div class="row">
 			<div class="col-md-12 text-center">
@@ -38,14 +38,14 @@
 
 @push('scripts')
 <script>
-	mapboxgl.accessToken = 'pk.eyJ1IjoibXVoYW1tYWRpa2hzYW45NCIsImEiOiJja2h3dm5lZjEwMG1sMnNvZ25xOXBvdzlpIn0.b8gZzLgBBoZYa0km0EUj1w';
-	var map = new mapboxgl.Map({
-		container: 'map',
-		style: 'mapbox://styles/mapbox/streets-v11',
-		center: [105.269748, -5.385338],
-		zoom: 10
-	});
+	var map;
+	function GetMap() {
+        map = new Microsoft.Maps.Map('#Mymap', {
+			credentials: 'AsvrlFVEvd8hivhOL3VM_na5QJ9cmdF0LmAznQpJtJhmUt5OkHcWvegTrt-qHEYq'
+		});
+    }
 </script>
+<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&countryFilter=ID&key=[AsvrlFVEvd8hivhOL3VM_na5QJ9cmdF0LmAznQpJtJhmUt5OkHcWvegTrt-qHEYq]' async defer></script>
 <!-- END SCRIPTS -->
 @endpush
 @endsection
