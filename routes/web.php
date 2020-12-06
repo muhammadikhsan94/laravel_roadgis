@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ComplaintController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +16,6 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('create', [HomeController::class, 'create'])->name('create');
+Route::get('read', [HomeController::class, 'read'])->name('read');
+Route::post('store', [HomeController::class, 'store'])->name('store');

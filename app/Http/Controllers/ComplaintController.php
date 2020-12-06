@@ -3,34 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\data_aduan;
 use App\Models\Lapor;
 use App\Models\Foto;
 
-class HomeController extends Controller
+class ComplaintController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('home');
-    }
-
-    public function create()
-    {
-        return view('buat_pengaduan');
-    }
-
-    public function read()
-    {
-        return view('data_pengaduan');
-    }
-
     public function store(Request $request)
     {
+        $request->validate([
+            'nama_pelapot' => 'required',
+            'nik' => 'required',
+            'nama_jalan' => 'required',
+            'id_kategori' => 'required'
+        ]);
+
         $data = new Lapor;
         $data->nama_pelapor=$request->get('nama_pelapor');
         $data->nik=$request->get('nik');
@@ -43,10 +29,10 @@ class HomeController extends Controller
         $data->save();
 
         $foto = new Foto;
-        $foto->id_lapor=$data->id_lapor;
-        $foto->foto_jalan=$request->file('foto_jalan')->getClientOriginalName();
+        $foto->foto_jalan=$request->get('foto_jalan');
         $foto->save();
 
-        return redirect('/')->with('alert-success', 'Data updated successfully!');
+        return redirect('read')->with('alert-success', 'Data updated successfully!');
+
     }
 }
