@@ -10,4 +10,9 @@ class Kategori extends Model
     protected $table="tbl_kategori";
     protected $primaryKey="id_kategori";
     protected $fillable=['nama_kategori', 'icon'];
+
+    public function lapor()
+    {
+        return $this->belongsTo('App\Models\Lapor', 'id_kategori');
+    }
 }

@@ -32,6 +32,33 @@
             </form>
         </div>
         <!-- END FORM PENCARIAN DATA -->
+
+        <div class="col-lg-12">
+            @if(!empty($data))
+                @foreach($data as $key => $d)
+                <!-- LOOPING DATA LAPOR MENURUT ID LAPOR -->
+                <div style="padding: 10px; border:1px solid #999;" class="media">
+                    <div class="media-left media-middle">
+                        <img style="width: 120px;height: 120px;" class="media-object" src="{{asset('img/'.$d->foto[0]['foto_jalan'])}}" alt="...">
+                    </div>
+                    <div class="media-body">
+                        <p style="font-size: 15px;">
+                            <b>Nama Pelapor :</b> {{ $d->nama_pelapor }} <br>
+                            <b>Tanggal Lapor :</b> {{ $d->tanggal_lapor }} <br>
+                            <b>Jalan Rusak :</b> {{ $d->nama_jalan }} <br>
+                            <b>Kategori Rusak :</b> {{ $d->kategori['nama_kategori'] }}
+                        </p>
+                        <div style="float: left;">
+                            <a href="{{url('read/id_lapor='.$d->id_lapor)}}" class="btn btn-primary"> Detail <span class="glyphicon glyphicon-new-window"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- END LOOPING DATA LAPOR MENURUT ID LAPOR -->
+                @endforeach
+            @else
+                <div style="text-align:center;"><img src="{{asset('assets/icon/notfound.png')}}"/></div>
+            @endif
+        </div>
     </div>
 </div>
 @endsection

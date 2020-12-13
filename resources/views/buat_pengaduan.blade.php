@@ -131,6 +131,7 @@
 </div>            
 <!-- END PAGE CONTENT -->
 
+<!-- JAVASCRIPT -->
 @push('scripts')    
 <script type='text/javascript'>
 

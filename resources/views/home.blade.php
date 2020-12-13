@@ -5,7 +5,7 @@
 
 @section('content')
 <!-- PAGE CONTENT -->
-<div class="page-content">
+<div class="page-content" onload="GetMap()">
 	<!-- START BREADCRUMB -->
 	<ul class="breadcrumb">
 		<li><a href="/"><span class="glyphicon glyphicon-home"></span> Beranda</a></li>
@@ -36,14 +36,58 @@
 </div>
 <!-- END CONTENT -->
 
-@push('scripts')
-<script>
+<!-- JAVASCRIPT -->
+@push('scripts')    
+<script type='text/javascript'>
+	//BING MAPS
 	var map;
-	function GetMap() {
+
+    function GetMap() {
         map = new Microsoft.Maps.Map('#Mymap', {
 			credentials: 'AsvrlFVEvd8hivhOL3VM_na5QJ9cmdF0LmAznQpJtJhmUt5OkHcWvegTrt-qHEYq'
 		});
+
+		var infoboxLayer = new Microsoft.Maps.EntityCollection();
+		var pinLayer = new Microsoft.Maps.EntityCollection();
+		var pin, locs = [], output = 'Saran:<br/>';
+
+		// Create the info box for the pushpin
+		pinInfobox = new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(0, 0), { visible: false });
+		infoboxLayer.push(pinInfobox);
+
+		// Get Data from Database
+		@foreach($data as $key => $d)
+			var loc = new Microsoft.Maps.Location({{ $d->lat }}, {{ $d->lng }});
+			pin = new Microsoft.Maps.Pushpin(loc, {
+				icon: '{{ asset('assets/icon/perbaikan.png') }}'
+			});
+			pin.Title = '{{ $d->nama_jalan }}';
+			pinLayer.push(pin);
+			locs.push(loc);
+			Microsoft.Maps.Events.addHandler(pin, 'click', displayInfobox);
+		@endforeach
+
+		//Add the pins to the map
+		map.entities.push(pinLayer);
+		map.entities.push(infoboxLayer);
+
+		//Determine a bounding box to best view the results.
+		var bounds;
+
+		//Use the locations from the results to calculate a bounding box.
+		bounds = Microsoft.Maps.LocationRect.fromLocations(locs);
+
+		map.setView({ center: bounds.center, zoom: 12});
     }
+
+	function displayInfobox(e) {
+		pinInfobox.setOptions({ title: e.target.Title, visible: true, offset: new Microsoft.Maps.Point(0, 25) });
+		pinInfobox.setLocation(e.target.getLocation());
+	}
+
+	function hideInfobox(e) {
+		pinInfobox.setOptions({ visible: false });
+	}
 </script>
 <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&countryFilter=ID&key=[AsvrlFVEvd8hivhOL3VM_na5QJ9cmdF0LmAznQpJtJhmUt5OkHcWvegTrt-qHEYq]' async defer></script>
 <!-- END SCRIPTS -->

@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Kategori;
 
 class Lapor extends Model
 {
@@ -12,4 +11,19 @@ class Lapor extends Model
     protected $primaryKey="id_lapor"; 
     protected $fillable=['nama_pelapor', 'nik', 'alamat', 'no_hp', 'nama_jalan', 'id_kategori', 'lat', 'lng'];
     public $timestamps = false;
+
+    public function foto()
+    {
+        return $this->hasMany('App\Models\Foto', 'id_lapor');
+    }
+
+    public function kategori()
+    {
+        return $this->belongsTo('App\Models\Kategori', 'id_kategori');
+    }
+
+    public function detaillapor()
+    {
+        return $this->hasOne('App\Models\DetailLapor', 'id_lapor');
+    }
 }
