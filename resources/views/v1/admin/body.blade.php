@@ -8,11 +8,11 @@
 			<!-- START X-NAVIGATION -->
 			<ul class="x-navigation">
 				<li class="xn-logo">
-					<a href="{{route('home')}}"><img style="margin-bottom: 5px;" src="{{asset('assets/icon/dbm.png')}}" width="20px" height="20px"/> ROAD GIS</a>
+					<a href="{{route('v1admin.home')}}"><img style="margin-bottom: 5px;" src="{{asset('assets/icon/dbm.png')}}" width="20px" height="20px"/> ROAD GIS</a>
 					<a href="#" class="x-navigation-control"></a>
 				</li>
 				<li class="xn-title">Menu Utama</li>
-				<li><a href="{{route('home')}}"><span class="glyphicon glyphicon-home"></span> Halaman Utama</a></li> 
+				<li><a href="{{route('v1admin.home')}}"><span class="glyphicon glyphicon-home"></span> Halaman Utama</a></li> 
 			</ul>
 			<!-- END X-NAVIGATION -->
 		</div>

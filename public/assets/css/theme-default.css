@@ -105,7 +105,7 @@ body {
 .page-container .page-content {
   min-height: 100%;
   margin-left: 220px;
-  background: #f5f5f5 url('../img/bg.png') left top repeat;
+  background: #fff;
   position: relative;
   zoom: 1;
 }
@@ -1173,7 +1173,7 @@ body.page-container-boxed .page-container {
 .breadcrumb {
   float: left;
   width: 100%;
-  background: #e8e8e8;
+  background: #d5d5d5;
   margin-bottom: 10px;
   padding: 6px 15px 7px;
   -moz-border-radius: 0px;
@@ -1422,8 +1422,8 @@ a.list-group-item:focus {
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
-  border: 0px;
-  border-top: 2px solid #E5E5E5;
+  /*border: 0px;*/
+  border: 1px solid #ddd;
   margin-bottom: 20px;
   position: relative;
   -moz-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
@@ -2231,12 +2231,12 @@ input[type=checkbox] {
 }
 .form-control[disabled],
 .form-control[readonly] {
-  color: #CCC;
+  color: #222;
 }
 .form-control[disabled]:focus,
 .form-control[readonly]:focus {
   background: #EEE;
-  color: #CCC;
+  color: #222;
   border-color: #D5D5D5;
 }
 .input-group-addon {

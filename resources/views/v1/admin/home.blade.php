@@ -8,76 +8,40 @@
 <div class="page-content">
 	<!-- START BREADCRUMB -->
 	<ul class="breadcrumb">
-		<li><a href="{{route('index')}}"><span class="glyphicon glyphicon-home"></span> Admin</a></li>
+		<li><a href="{{route('v1admin.home')}}"><span class="glyphicon glyphicon-home"></span> Admin</a></li>
 	</ul>
 	<!-- END BREADCRUMB -->                       
 					
 	<!-- PAGE CONTENT WRAPPER -->
-	<!--<div class="page-content-wrap" style="padding:10px;">-->
-		<div class="container-fluid">
-			<div class="card card-default color-palette-box">
-				<div class="card-body">
-				<table id="user-table" class="table table-striped table-bordered" style="width:100%">
-					<thead>
-					<tr>
-						<th>Pelapor</th>
-						<th>Nama Jalan</th>
-						<th>Disposisi</th>
-						<th>Status</th>
-						<th>Proses Perbaikan</th>
-						<th>Action</th>
-					</tr>
-					</thead>
-					<tbody>
-					@foreach($data as $key => $d)
-					<tr>
-						<td>{{ $d->nama_pelapor }}</td>
-						<td>{{ $d->nama_jalan }}</td>
-						<td>{{ $d->detaillapor['disposisi'] }}</td>
-						<td>{{ $d->detaillapor['status'] }}</td>
-						<td>{{ $d->detaillapor['proses_perbaikan'] }}</td>
-						<td>
-							<a href="{{url('read',array($d->id))}}">Read</a>
-							<a href="{{url('delete',array($d->id))}}">Delete</a>
-							<a href="{{url('edit',array($d->id))}}">Edit</a>
-						</td>
-					</tr>
-					@endforeach
-				</tbody>
-				</table>
-				</div>
-			</div>
-		</div>
-		<!--<table class="table table-bordered table-hover">
+	<div class="page-content-wrap">
+		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th>Pelapor</th>
-					<th>Nama Jalan</th>
-					<th>Disposisi</th>
-					<th>Status</th>
-					<th>Proses Perbaikan</th>
-					<th>Action</th>
+					<th scope="col" width="15%">Tanggal Lapor</th>
+					<th scope="col" width="15%">Pelapor</th>
+					<th scope="col" width="40%">Nama Jalan</th>
+					<th scope="col" width="15%">Disposisi</th>
+					<th scope="col" width="15%">Action</th>
 				</tr>
 			</thead>
 
 			<tbody>
 				@foreach($data as $key => $d)
 				<tr>
+					<td>{{ $d->tanggal_lapor }}</td>
 					<td>{{ $d->nama_pelapor }}</td>
 					<td>{{ $d->nama_jalan }}</td>
 					<td>{{ $d->detaillapor['disposisi'] }}</td>
-					<td>{{ $d->detaillapor['status'] }}</td>
-					<td>{{ $d->detaillapor['proses_perbaikan'] }}</td>
 					<td>
-						<a href="{{url('read',array($d->id))}}">Read</a>
-						<a href="{{url('delete',array($d->id))}}">Delete</a>
-						<a href="{{url('edit',array($d->id))}}">Edit</a>
+						<a href="{{route('v1admin.read', array($d->id_lapor))}}" class="btn btn-success" role="button" aria-pressed="true">EDIT</a>
+						<a href="{{url('delete',array($d->id))}}" class="btn btn-danger" role="button" aria-pressed="true">DELETE</a>
 					</td>
 				</tr>
 				@endforeach
 			</tbody>
-		</table>-->
-	<!--</div>-->
+			<caption>List of Complaints</caption>
+		</table>
+	</div>
 </div>
 
 @endsection

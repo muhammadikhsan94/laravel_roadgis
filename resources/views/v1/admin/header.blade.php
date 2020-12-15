@@ -12,7 +12,7 @@
 
 <!-- CSS INCLUDE -->        
 <link rel="stylesheet" type="text/css" id="theme" href="{{asset('assets/css/theme-default.css')}}"/>
-<!--<link rel="stylesheet" href="{{asset('assets/css/bootstrap/bootstrap.min.css')}}">-->
+<!--<link rel="stylesheet" href="{{asset('assets/css/bootstrap/bootstrap.css')}}">-->
 <!-- END CSS INCLUDE -->          
 
 <!-- DATE TIME --> 
