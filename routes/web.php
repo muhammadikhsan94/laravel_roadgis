@@ -25,7 +25,7 @@ Route::get('read/id_lapor={id_lapor}', [ComplaintController::class, 'detailLapor
 
 Route::post('login', [LoginController::class, 'authenticate']);
 
-Route::prefix('v1admin')->group(function () {
+Route::prefix('admin')->group(function () {
 	Route::get('/', [AdminController::class, 'index'])->name('v1admin.home');
-	Route::get('read/id_lapor={id_lapor}', [AdminController::class, 'read'])->name('v1admin.read');
+	Route::get('/read/id_lapor={id_lapor}', [AdminController::class, 'read'])->name('v1admin.read');
 });

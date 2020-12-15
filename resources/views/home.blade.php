@@ -59,7 +59,7 @@
 		@foreach($data as $key => $d)
 			var loc = new Microsoft.Maps.Location({{ $d->lat }}, {{ $d->lng }});
 			pin = new Microsoft.Maps.Pushpin(loc, {
-				icon: '{{ asset('assets/icon/perbaikan.png') }}'
+				icon: '{{ asset('assets/icon/'.$d->kategori['ikon']) }}'
 			});
 			pin.Title = '{{ $d->nama_jalan }}';
 			pinLayer.push(pin);
