@@ -8,7 +8,7 @@
 <div class="page-content">
 	<!-- START BREADCRUMB -->
 	<ul class="breadcrumb">
-		<li><a href="{{route('v1admin.home')}}"><span class="glyphicon glyphicon-home"></span> Admin</a></li>
+		<li><a href="{{route('admin.home')}}"><span class="glyphicon glyphicon-home"></span> Admin</a></li>
 	</ul>
 	<!-- END BREADCRUMB -->                       
 					
