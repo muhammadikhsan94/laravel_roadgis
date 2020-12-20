@@ -1,10 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ComplaintController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +13,26 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('create', [HomeController::class, 'create'])->name('create');
-Route::get('read', [ComplaintController::class, 'read'])->name('read');
-Route::post('store', [ComplaintController::class, 'store'])->name('store');
-Route::get('read/id_lapor={id_lapor}', [ComplaintController::class, 'detailLapor'])->name('detailLapor');
+//Route::get('/', function () {
+//    return view('home');
+//});
 
-Route::post('login', [LoginController::class, 'authenticate']);
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
+Route::get('create', 'App\Http\Controllers\HomeController@create')->name('create');
+Route::get('read', 'App\Http\Controllers\HomeController@read')->name('read');
+Route::post('store', 'App\Http\Controllers\HomeController@store')->name('store');
+Route::get('read/id_lapor={id_lapor}', 'App\Http\Controllers\HomeController@detailLapor')->name('detailLapor');
+
+Route::get('login', 'App\Http\Controllers\LoginController@login')->name('login');
+Route::post('login_in', 'App\Http\Controllers\LoginController@auth');
+
+Route::get('register', 'App\Http\Controllers\LoginController@register')->name('register');
+
+Auth::routes();
 
 Route::prefix('admin')->group(function () {
-	Route::get('/', [AdminController::class, 'index'])->name('admin.home');
-	Route::get('/read/id_lapor={id_lapor}', [AdminController::class, 'read'])->name('admin.read');
+	Route::get('/', 'App\Http\Controllers\AdminController@index')->name('admin.home');
+	Route::get('read/id_lapor={id_lapor}', 'App\Http\Controllers\AdminController@read')->name('admin.read');
+	Route::post('update', 'App\Http\Controllers\AdminController@update')->name('admin.update');
+	Route::get('logout', 'App\Http\Controllers\LoginController@logout')->name('admin.logout');
 });

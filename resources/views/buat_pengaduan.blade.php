@@ -1,14 +1,14 @@
-@extends('layout')
-@extends('header')
-@extends('body')
-@extends('footer')
+@extends('layouts/layout')
+@extends('layouts/header')
+@extends('layouts/body')
+@extends('layouts/footer')
 
 @section('content')
 <!-- PAGE CONTENT -->
 <div class="page-content">
 	<!-- START BREADCRUMB -->
 	<ul class="breadcrumb">
-		<li><a href="{{route('home')}}"><span class="glyphicon glyphicon-home"></span></a></li>                    
+		<li><a href="{{ route('home') }}"><span class="glyphicon glyphicon-home"></span></a></li>                    
 		<li class="active">Buat Pengaduan</li>
 	</ul>
 	<!-- END BREADCRUMB -->                       
@@ -23,7 +23,7 @@
 						<form class="form-horizontal" role="form" action="{{ url('store') }}" method="post" enctype="multipart/form-data">
 							@csrf
 							<div class="form-group">
-								<label class="col-md-3">Nama Pelapor</label>
+								<label class="col-md-3">Nama Pelapor*</label>
 								<div class="col-md-4">
 								<input class="form-control" placeholder="Nama Lengkap " id="nama_pelapor" name="nama_pelapor" type="text" autofocus>
 								</div>
@@ -51,7 +51,7 @@
 							</div>
 
 							<div class="form-group">
-								<label class="col-md-3">Nama Jalan Rusak</label>
+								<label class="col-md-3">Nama Jalan Rusak*</label>
 								<div class="col-md-9">
 								<input class="form-control" id="nama_jalan" name="nama_jalan" type="text" placeholder="nama jalan " onchange="Search()">
 								<!--<input class="form-control" placeholder="Nama Jalan " id="nama_jalan" name="nama_jalan" type="text">-->
@@ -60,7 +60,7 @@
 							</div>
 
 							<div class="form-group">
-								<label class="col-md-3">Kategori Rusak</label>
+								<label class="col-md-3">Kategori Rusak*</label>
 								<div class="col-md-3">
 								<select id="id_kategori" name="id_kategori" class="form-control">
 									<option value="1">Jalan Rusak Ringan</option>
@@ -75,9 +75,9 @@
 							<input type="text" id="lng" name="lng">
 
 							<div class="form-group">
-								<label class="col-md-3">Foto Jalan</label>
+								<label class="col-md-3">Foto Jalan*</label>
 								<div class="col-md-9">
-								<input class="form-control" id="foto_jalan" name="foto_jalan" type="file" multiple="" accept="{{asset('img/*')}}">
+								<input class="form-control" id="foto_jalan" name="foto_jalan[]" type="file" multiple accept="{{ asset('images/*') }}">
 								</div>
 							</div>
 
@@ -173,7 +173,7 @@
                     for (var i = 0; i < r.results.length; i++) {
                         //Create a pushpin for each result. 
                         pin = new Microsoft.Maps.Pushpin(r.results[i].location, {
-                            icon: '{{asset('assets/icon/markers.png')}}'
+                            icon: '{{asset('icon/markers.png')}}'
                         });
                         pins.push(pin);
                         locs.push(r.results[i].location);

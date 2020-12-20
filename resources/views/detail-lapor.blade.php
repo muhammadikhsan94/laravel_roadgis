@@ -1,14 +1,14 @@
-@extends('layout')
-@extends('header')
-@extends('body')
-@extends('footer')
+@extends('layouts/layout')
+@extends('layouts/header')
+@extends('layouts/body')
+@extends('layouts/footer')
 
 @section('content')
 <!-- PAGE CONTENT -->
 <div class="page-content">
     <!-- START BREADCRUMB -->
     <ul class="breadcrumb">
-        <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+        <li><a href="{{ route('home') }}"><span class="glyphicon glyphicon-home"></span></a></li>
         <li class="active">Data Pengaduan</li>
     </ul>
     <!-- END BREADCRUMB -->     
@@ -25,7 +25,7 @@
 								<p><b>Tanggal Lapor:</b></p>
 							</div>
 							<div class="col-md-9 bg">
-								<p><b>{{$data->tanggal_lapor}}</b></p>
+								<p><b>{{ $data->tanggal_lapor }}</b></p>
 							</div>
 						</div>
 						<div class="row">
@@ -33,7 +33,7 @@
 								<p><b>Nama Pelapor:</b></p>
 							</div>
 							<div class="col-md-9 bg">
-								<p><b>{{$data->nama_pelapor}}</b></p>
+								<p><b>{{ $data->nama_pelapor }}</b></p>
 							</div>
 						</div>
 						<div class="row">
@@ -41,7 +41,7 @@
 								<p><b>Nomor Identitas:</b></p>
 							</div>
 							<div class="col-md-9 bg">
-								<p><b>{{$data->nik}}</b></p>
+								<p><b>{{ $data->nik }}</b></p>
 							</div>
 						</div>
 						<div class="row">
@@ -49,7 +49,7 @@
 								<p><b>Alamat:</b></p>
 							</div>
 							<div class="col-md-9 bg">
-								<p><b>{{$data->alamat}}</b></p>
+								<p><b>{{ $data->alamat }}</b></p>
 							</div>
 						</div>
 						<div class="row">
@@ -57,7 +57,7 @@
 								<p><b>Nomor HP:</b></p>
 							</div>
 							<div class="col-md-9 bg">
-								<p><b>{{$data->no_hp}}</b></p>
+								<p><b>{{ $data->no_hp }}</b></p>
 							</div>
 						</div>
 						<div class="row">
@@ -65,7 +65,7 @@
 								<p><b>Nama Jalan Rusak:</b></p>
 							</div>
 							<div class="col-md-9 bg">
-								<p><b>{{$data->nama_jalan}}</b></p>
+								<p><b>{{ $data->nama_jalan }}</b></p>
 							</div>
 						</div>
 						<div class="row">
@@ -74,9 +74,7 @@
 							</div>
 							<div class="col-md-9 bg">
 							@foreach($data->foto as $key => $foto)
-								<div class="col-md-4">
-									<img style="width: 100%;height: 150px;margin-bottom: 10px;" class="media-object" src="{{asset('img/'.$foto->foto_jalan)}}" alt="Foto Jalan Rusak" title="Foto Jalan Rusak">
-								</div>	
+								<img style="height: 200px;margin-bottom: 10px;" class="media-object" src="{{ asset('images/'.$foto->foto_jalan) }}" alt="Foto Jalan Rusak" title="Foto Jalan Rusak">
 							@endforeach	
 							</div>
 						</div>
@@ -85,7 +83,7 @@
 								<p><b>Kategori Rusak</b></p>
 							</div>
 							<div class="col-md-9 bg">
-								<p><b>{{$data->kategori['nama_kategori']}}</b></p>
+								<p><b>{{ $data->kategori['nama_kategori'] }}</b></p>
 							</div>
 						</div>
 						<div class="row">
@@ -93,7 +91,7 @@
 								<p><b>Disposisi:</b></p>
 							</div>
 							<div class="col-md-9 bg">
-								<p><b>{{$data->detaillapor['disposisi']}}</b></p>
+								<p><b>{{ $data->detaillapor['admin']['nama_admin'] }}</b></p>
 							</div>
 						</div>
 						<div class="row">
@@ -101,7 +99,7 @@
 								<p><b>Status:</b></p>
 							</div>
 							<div class="col-md-9 bg">
-								<p><b>{{$data->detaillapor['status']}}</b></p>
+								<p><b>{{ $data->detaillapor['status'] }}</b></p>
 							</div>
 						</div>
 						<div class="row">
@@ -110,7 +108,7 @@
 							</div>
 							<div class="col-md-5 bg">
 								<div class="progress">
-									<div class="progress-bar" role="progressbar" aria-valuenow="{{$data->detaillapor['proses_perbaikan']}}" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: {{ $data->detaillapor['proses_perbaikan'] }}%;"> {{ $data->detaillapor['proses_perbaikan'] }}% </div>
+									<div class="progress-bar" role="progressbar" aria-valuenow="{{ $data->detaillapor['proses_perbaikan'] }}" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: {{ $data->detaillapor['proses_perbaikan'] }}%;"> {{ $data->detaillapor['proses_perbaikan'] }}% </div>
 								</div>
 							</div>
 						</div>

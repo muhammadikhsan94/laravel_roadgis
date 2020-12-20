@@ -1,14 +1,14 @@
-@extends('layout')
-@extends('header')
-@extends('body')
-@extends('footer')
+@extends('layouts/layout')
+@extends('layouts/header')
+@extends('layouts/body')
+@extends('layouts/footer')
 
 @section('content')
 <!-- PAGE CONTENT -->
 <div class="page-content">
     <!-- START BREADCRUMB -->
     <ul class="breadcrumb">
-        <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+        <li><a href="{{ route('home') }}"><span class="glyphicon glyphicon-home"></span></a></li>
         <li class="active">Data Pengaduan</li>
     </ul>
     <!-- END BREADCRUMB -->                       
@@ -39,7 +39,7 @@
                 <!-- LOOPING DATA LAPOR MENURUT ID LAPOR -->
                 <div style="padding: 10px; border:1px solid #999;" class="media">
                     <div class="media-left media-middle">
-                        <img style="width: 120px;height: 120px;" class="media-object" src="{{asset('img/'.$d->foto[0]['foto_jalan'])}}" alt="...">
+                        <img style="width: 120px;height: 120px;" class="media-object" src="{{ asset('images/'.$d->foto[0]['foto_jalan']) }}" alt="...">
                     </div>
                     <div class="media-body">
                         <p style="font-size: 15px;">
@@ -49,14 +49,14 @@
                             <b>Kategori Rusak :</b> {{ $d->kategori['nama_kategori'] }}
                         </p>
                         <div style="float: left;">
-                            <a href="{{url('read/id_lapor='.$d->id_lapor)}}" class="btn btn-primary"> Detail <span class="glyphicon glyphicon-new-window"></span></a>
+                            <a href="{{ url('read/id_lapor='.$d->id_lapor) }}" class="btn btn-primary"> Detail <span class="glyphicon glyphicon-new-window"></span></a>
                         </div>
                     </div>
                 </div>
                 <!-- END LOOPING DATA LAPOR MENURUT ID LAPOR -->
                 @endforeach
             @else
-                <div style="text-align:center;"><img src="{{asset('assets/icon/notfound.png')}}"/></div>
+                <div style="text-align:center;"><img src="{{asset('icon/notfound.png')}}"/></div>
             @endif
         </div>
     </div>

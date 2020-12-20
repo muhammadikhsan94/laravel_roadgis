@@ -14,7 +14,7 @@ class Lapor extends Model
 
     public function foto()
     {
-        return $this->hasMany('App\Models\Foto', 'id_lapor');
+        return $this->hasMany('App\Models\Foto', 'id_lapor', 'id_lapor');
     }
 
     public function kategori()

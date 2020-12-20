@@ -13,6 +13,11 @@ class DetailLapor extends Model
 
     public function lapor()
     {
-        return $this->belongsTo('App\Models\Lapor', 'id_lapor');
+        return $this->belongsTo('App\Models\Lapor', 'id_lapor', 'id_lapor');
+    }
+
+    public function admin()
+    {
+        return $this->hasOne('App\Models\Admin', 'id', 'disposisi');
     }
 }

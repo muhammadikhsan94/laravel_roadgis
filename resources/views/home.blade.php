@@ -1,7 +1,7 @@
-@extends('layout')
-@extends('header')
-@extends('body')
-@extends('footer')
+@extends('layouts/layout')
+@extends('layouts/header')
+@extends('layouts/body')
+@extends('layouts/footer')
 
 @section('content')
 <!-- PAGE CONTENT -->
@@ -19,15 +19,15 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 text-center">
-				<img style='width: 25px; height: 25px' src="{{asset('assets/icon/ringan.png')}}"/>
+				<img style='width: 25px; height: 25px' src="{{asset('icon/ringan.png')}}"/>
 				<span style="margin-left: 5px;margin-right: 20px;"><b>JALAN RUSAK RINGAN</b></span> 
-				<img style='width: 25px; height: 25px' src="{{asset('assets/icon/sedang.png')}}"/>
+				<img style='width: 25px; height: 25px' src="{{asset('icon/sedang.png')}}"/>
 				<span style="margin-left: 5px;margin-right: 20px;"><b>JALAN RUSAK SEDANG</b></span>
-				<img style='width: 25px; height: 25px' src="{{asset('assets/icon/berat.png')}}"/>
+				<img style='width: 25px; height: 25px' src="{{asset('icon/berat.png')}}"/>
 				<span style="margin-left: 5px;margin-right: 20px;"><b>JALAN RUSAK BERAT</b></span>
-				<img style='width: 25px; height: 25px' src="{{asset('assets/icon/perbaikan.png')}}"/>
+				<img style='width: 25px; height: 25px' src="{{asset('icon/perbaikan.png')}}"/>
 				<span style="margin-left: 5px;margin-right: 20px;"><b>JALAN DALAM PERBAIKAN</b></span>
-				<img style='width: 25px; height: 25px' src="{{asset('assets/icon/selesai.png')}}"/>
+				<img style='width: 25px; height: 25px' src="{{asset('icon/selesai.png')}}"/>
 				<span style="margin-left: 5px;"><b>JALAN SELESAI DIPERBAIKI</b></span>
 			</div>
 		</div>
@@ -59,7 +59,7 @@
 		@foreach($data as $key => $d)
 			var loc = new Microsoft.Maps.Location({{ $d->lat }}, {{ $d->lng }});
 			pin = new Microsoft.Maps.Pushpin(loc, {
-				icon: '{{ asset('assets/icon/'.$d->kategori['ikon']) }}'
+				icon: '{{ asset('icon/'.$d->kategori['ikon']) }}'
 			});
 			pin.Title = '{{ $d->nama_jalan }}';
 			pinLayer.push(pin);

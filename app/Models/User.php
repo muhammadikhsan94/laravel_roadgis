@@ -16,6 +16,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'name',
         'email',
@@ -40,4 +43,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function detaillapor()
+    {
+        return $this->belongsTo('App\Models\DetailLapor', 'disposisi', 'id');
+    }
 }
