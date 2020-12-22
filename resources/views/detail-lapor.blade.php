@@ -91,7 +91,7 @@
 								<p><b>Disposisi:</b></p>
 							</div>
 							<div class="col-md-9 bg">
-								<p><b>{{ $data->detaillapor['admin']['nama_admin'] }}</b></p>
+								<p><b>{{ $data->detaillapor['admin']['name'] }}</b></p>
 							</div>
 						</div>
 						<div class="row">

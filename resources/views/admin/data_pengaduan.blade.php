@@ -24,47 +24,53 @@
 							<div class="form-group">
 								<label class="col-md-3">Nama Pelapor</label>
 								<div class="col-md-4">
-								<input class="form-control" value="{{$data->nama_pelapor}}" type="text" readonly>
+									<label style="color:green;">{{$data->nama_pelapor}}</label>
+								<!--<input class="form-control" value="{{$data->nama_pelapor}}" type="text" readonly>-->
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="col-md-3">Nomor Identitas</label>
 								<div class="col-md-4">
-									<input class="form-control" value="{{$data->nik}}" type="text" readonly>
+									<label style="color:green;">{{$data->nik}}</label>
+									<!--<input class="form-control" value="{{$data->nik}}" type="text" readonly>-->
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="col-md-3">Alamat Pelapor</label>
 								<div class="col-md-9">
-									<input class="form-control" value="{{$data->alamat}}" type="text" readonly>
+									<!--<input class="form-control" value="{{$data->alamat}}" type="text" readonly>-->
+									<label style="color:green;">{{$data->alamat}}</label>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="col-md-3">Nomor HP</label>
 								<div class="col-md-4">
-									<input class="form-control" value="{{$data->no_hp}}" id="no_hp" name="no_hp" type="text" readonly>
+									<!--<input class="form-control" value="{{$data->no_hp}}" id="no_hp" name="no_hp" type="text" readonly>-->
+									<label style="color:green;">{{$data->no_hp}}</label>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="col-md-3">Nama Jalan Rusak</label>
 								<div class="col-md-9">
-									<input class="form-control" type="text" value="{{$data->nama_jalan}}" readonly>
+									<!--<input class="form-control" type="text" value="{{$data->nama_jalan}}" readonly>-->
+									<label style="color:green;">{{$data->nama_jalan}}</label>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="col-md-3">Kategori Rusak</label>
 								<div class="col-md-4">
-									<input class="form-control" value="{{$data->kategori['nama_kategori']}}" type="text" readonly>
+									<!--<input class="form-control" value="{{$data->kategori['nama_kategori']}}" type="text" readonly>-->
+									<label style="color:green;">{{$data->kategori['nama_kategori']}}</label>
 								</div>
 							</div>
 
-							<input type="text" id="lat" name="lat" value="{{$data->lat}}">
-							<input type="text" id="lng" name="lng" value="{{$data->lng}}">
+							<input type="hidden" id="lat" name="lat" value="{{$data->lat}}">
+							<input type="hidden" id="lng" name="lng" value="{{$data->lng}}">
 
 							<div class="form-group">
 								<label class="col-md-3">Foto Jalan</label>
@@ -186,10 +192,6 @@
 @push('scripts')    
 <script type='text/javascript'>
 
-	document.getElementById("lat").style.display = "none";
-	document.getElementById("lng").style.display = "none";
-	document.getElementById("id_lapor").style.display = "none";
-	//BING MAPS
 	var map;
 
     function GetMap() {
